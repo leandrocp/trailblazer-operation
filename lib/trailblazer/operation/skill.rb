@@ -34,7 +34,8 @@ class Trailblazer::Operation
       # FIXME: that shouldn't be here in this namespace.
       module Positional
         def call(params={}, options={}, *dependencies)
-          super(options.merge("params" => params), *dependencies)
+          attrs = params.key?("params") ? params["params"] : params
+          super(options.merge("params" => attrs), *dependencies)
         end
       end
     end
